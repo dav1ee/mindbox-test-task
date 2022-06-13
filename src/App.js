@@ -1,23 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+
+import TodoInput from './components/TodoInput';
+import TodoList from './components/TodoList';
+import Footer from './components/Footer';
 
 function App() {
+  const [todos, setTodos] = useState([
+    { id: 1, text: 'First todo', isCompleted: false },
+    { id: 2, text: 'Second todo', isCompleted: true },
+  ]);
+  const activeTodos = todos.filter((t) => !t.isCompleted);
+  const completedTodos = todos.filter((t) => t.isCompleted);
+
+  const addTodo = (todo) => setTodos([...todos, todo]);
+
+  const completeTodo = (id) => {
+    setTodos(
+      [...todos],
+      todos.filter((todo) => (todo.id === id ? (todo.isCompleted = true) : todos)),
+    );
+  };
+
+  const clearCompleted = () => {
+    const uncompletedOnly = todos.filter((t) => !t.isCompleted);
+    setTodos(uncompletedOnly);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <TodoInput addTodo={addTodo} />
+      {todos.length ? (
+        <>
+          <Routes>
+            <Route path="/" element={<TodoList todos={todos} completeTodo={completeTodo} />} />
+            <Route
+              path="/active"
+              element={<TodoList todos={activeTodos} completeTodo={completeTodo} />}
+            />
+            <Route path="/completed" element={<TodoList todos={completedTodos} />} />
+          </Routes>
+          <Footer todos={todos} clearCompleted={clearCompleted} />
+        </>
+      ) : (
+        <h3 className="empty">You have no todos yet</h3>
+      )}
     </div>
   );
 }

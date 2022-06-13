@@ -1,13 +1,146 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: #f4f4f4;
+}
+
+.app {
+  width: 600px;
+  margin: 100px auto;
+  padding: 30px 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.input {
+  position: relative;
+  border-bottom: 2px solid rgb(233, 233, 233);
+}
+
+.input input {
+  width: 100%;
+  height: 40px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  border: 0;
+  font-size: 20px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.input__clear {
+  position: absolute;
+  top: 7px;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+.input__clear:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.todo-list {
+  margin-top: 30px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.item__circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 30px;
+  height: 30px;
+  margin-right: 20px;
+  border: 1px solid #777;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.item__circle:hover {
+  background-color: rgb(10, 182, 10);
+  border: 0;
+  color: #fff;
+}
+
+.item__circle.active {
+  background-color: rgb(10, 182, 10);
+  border: 0;
+  color: #fff;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px solid rgb(233, 233, 233);
+  font-weight: 700;
+  color: #a2a2a2;
+}
+
+.footer-center {
+  list-style: none;
+}
+
+.footer-center li {
+  display: inline;
+}
+
+.footer-center li a {
+  margin: 0 7px;
+  padding: 2px 10px;
+  color: #a2a2a2;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid #a2a2a2;
+  border-radius: 3px;
+  transition: all 0.1s ease-in-out;
+}
+
+.footer-center li a:hover {
+  background-color: #949494;
+  color: #fff;
+}
+
+.footer-center li a.active {
+  background-color: #949494;
+  color: #fff;
+}
+
+.footer-right span {
+  font-weight: 400;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.footer-right span:hover {
+  color: #212121;
+  text-decoration: underline;
+}
+
+.empty {
+  margin: 40px 0 20px;
+  text-align: center;
+  opacity: 0.3;
 }
